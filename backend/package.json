@@ -1,0 +1,16 @@
+{
+  "name": "shilpmitra-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "seed": "node scripts/seed.js",
+    "seed-policies": "node scripts/seed-policies.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@supabase/supabase-js": "^2.49.0",
+    "jspdf": "^2.5.2",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.7"
+  }
+}

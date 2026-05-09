@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cluster Management Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#ffdcc6",
+                      "on-primary-container": "#9da1ff",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#1b1b21",
+                      "surface-container": "#f0ecf5",
+                      "inverse-on-surface": "#f2eff8",
+                      "surface-container-high": "#eae7f0",
+                      "secondary-fixed-dim": "#ffb786",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#642f00",
+                      "surface-container-highest": "#e4e1ea",
+                      "on-tertiary-fixed": "#341100",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#1b1b21",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#e4e1ea",
+                      "on-primary-fixed": "#04006d",
+                      "on-primary-fixed-variant": "#373a9b",
+                      "inverse-surface": "#303036",
+                      "on-tertiary-fixed-variant": "#773207",
+                      "primary": "#15157d",
+                      "background": "#fcf8ff",
+                      "on-error": "#ffffff",
+                      "surface-container-low": "#f5f2fb",
+                      "on-secondary-fixed": "#311300",
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#4f54b4",
+                      "primary-container": "#2e3192",
+                      "secondary-container": "#ff8928",
+                      "on-secondary-fixed-variant": "#723600",
+                      "secondary": "#964900",
+                      "surface-dim": "#dbd9e1",
+                      "outline": "#777683",
+                      "tertiary-fixed": "#ffdbcb",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#ffb692",
+                      "tertiary": "#491a00",
+                      "primary-fixed": "#e1e0ff",
+                      "on-surface-variant": "#464652",
+                      "surface-bright": "#fcf8ff",
+                      "inverse-primary": "#c0c1ff",
+                      "on-tertiary-container": "#f19160",
+                      "outline-variant": "#c7c5d4",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "tertiary-container": "#6c2a00",
+                      "surface": "#fcf8ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "gutter": "16px",
+                      "md": "16px",
+                      "safe-margin": "20px",
+                      "sm": "8px",
+                      "unit": "4px",
+                      "xl": "32px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "h2-headline": [
+                              "Geist"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "h1-display": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "h3-title": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "h2-headline": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h1-display": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h3-title": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-safe-margin py-xs max-w-xl mx-auto">
+<button class="p-2 text-primary dark:text-inverse-primary hover:bg-surface-container-high transition-colors rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-h2-headline text-h2-headline font-bold text-primary dark:text-primary-fixed-dim">शिल्पमित्र</h1>
+<button class="p-2 text-primary dark:text-inverse-primary hover:bg-surface-container-high transition-colors rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="translate">translate</span>
+</button>
+</div>
+</header>
+<main class="pt-24 px-safe-margin max-w-xl mx-auto space-y-lg">
+<!-- Header Section -->
+<div>
+<h2 class="font-h1-display text-h1-display text-primary mb-sm">Kutch Pottery Cluster</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Cluster Management Dashboard</p>
+</div>
+<!-- Cluster Overview Bento -->
+<div class="grid grid-cols-2 gap-sm">
+<div class="glass-card rounded-xl p-md flex flex-col justify-between">
+<div class="flex items-center gap-2 mb-sm text-secondary">
+<span class="material-symbols-outlined text-xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">Total Revenue</span>
+</div>
+<div class="font-h2-headline text-h2-headline text-primary">₹1,25,000</div>
+</div>
+<div class="glass-card rounded-xl p-md flex flex-col justify-between">
+<div class="flex items-center gap-2 mb-sm text-tertiary">
+<span class="material-symbols-outlined text-xl" data-icon="military_tech">military_tech</span>
+<span class="font-label-caps text-label-caps">SFURTI Progress</span>
+</div>
+<div>
+<div class="font-h2-headline text-h2-headline text-on-surface mb-xs">75%</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 75%"></div>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-2 text-right">to next grant</p>
+</div>
+</div>
+</div>
+<!-- Payment Split Calculator -->
+<div class="glass-card rounded-xl p-md">
+<div class="flex items-center gap-2 mb-md border-b border-outline-variant/30 pb-sm">
+<span class="material-symbols-outlined text-primary" data-icon="pie_chart">pie_chart</span>
+<h3 class="font-h3-title text-h3-title text-on-surface">Payment Split Calculator</h3>
+</div>
+<div class="bg-surface-container-low rounded-lg p-md mb-md border border-outline-variant/20">
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-md text-body-md text-on-surface-variant">Example Sale</span>
+<span class="font-h3-title text-h3-title text-primary">₹10,000</span>
+</div>
+</div>
+<div class="space-y-sm relative pl-6 before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-variant">
+<!-- Split Item -->
+<div class="flex justify-between items-center relative">
+<div class="absolute -left-6 w-3 h-3 rounded-full bg-primary ring-4 ring-surface"></div>
+<div>
+<div class="font-body-md text-body-md text-on-surface font-semibold">Lead Artisan</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">40% Share</div>
+</div>
+<div class="font-body-md text-body-md text-primary font-semibold">₹4,000</div>
+</div>
+<!-- Split Item -->
+<div class="flex justify-between items-center relative">
+<div class="absolute -left-6 w-3 h-3 rounded-full bg-secondary ring-4 ring-surface"></div>
+<div>
+<div class="font-body-md text-body-md text-on-surface font-semibold">Raw Materials</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">30% Share</div>
+</div>
+<div class="font-body-md text-body-md text-secondary font-semibold">₹3,000</div>
+</div>
+<!-- Split Item -->
+<div class="flex justify-between items-center relative">
+<div class="absolute -left-6 w-3 h-3 rounded-full bg-tertiary ring-4 ring-surface"></div>
+<div>
+<div class="font-body-md text-body-md text-on-surface font-semibold">Cluster Fund</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">30% Share</div>
+</div>
+<div class="font-body-md text-body-md text-tertiary font-semibold">₹3,000</div>
+</div>
+</div>
+</div>
+<!-- Members List -->
+<div>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-h3-title text-h3-title text-on-surface">Key Members</h3>
+<button class="text-primary font-label-caps text-label-caps flex items-center gap-1">
+                    View All <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-1 gap-sm">
+<!-- Member Card -->
+<div class="bg-surface-container-lowest rounded-xl p-sm flex items-center gap-md shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-outline-variant/20">
+<div class="w-12 h-12 rounded-full bg-primary-container text-primary flex items-center justify-center font-h3-title text-h3-title">
+                        S
+                    </div>
+<div class="flex-1">
+<div class="font-body-md text-body-md text-on-surface font-semibold">Sunita Devi</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Master Potter • Lead Artisan</div>
+</div>
+<div class="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-caps text-label-caps">
+                        40%
+                    </div>
+</div>
+<!-- Member Card -->
+<div class="bg-surface-container-lowest rounded-xl p-sm flex items-center gap-md shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-outline-variant/20">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-secondary flex items-center justify-center font-h3-title text-h3-title">
+                        R
+                    </div>
+<div class="flex-1">
+<div class="font-body-md text-body-md text-on-surface font-semibold">Ramesh Kumar</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Glazing Specialist</div>
+</div>
+<div class="bg-secondary/10 text-secondary px-3 py-1 rounded-full font-label-caps text-label-caps">
+                        25%
+                    </div>
+</div>
+</div>
+</div>
+<!-- CTA -->
+<div class="mt-xl">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-body-md text-body-md font-semibold py-4 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+                Manage Shared Ledger
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] md:hidden">
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:bg-surface-container-highest/50 transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="storefront">storefront</span>
+<span class="font-label-caps text-label-caps">बाज़ार</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-surface-container-highest/50 transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard" data-weight="fill">dashboard</span>
+<span class="font-label-caps text-label-caps">डैशबोर्ड</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:bg-surface-container-highest/50 transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="account_balance">account_balance</span>
+<span class="font-label-caps text-label-caps">योजनाएं</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:bg-surface-container-highest/50 transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">प्रोफ़ाइल</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seller Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#ffdcc6",
+                      "on-primary-container": "#9da1ff",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#1b1b21",
+                      "surface-container": "#f0ecf5",
+                      "inverse-on-surface": "#f2eff8",
+                      "surface-container-high": "#eae7f0",
+                      "secondary-fixed-dim": "#ffb786",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#642f00",
+                      "surface-container-highest": "#e4e1ea",
+                      "on-tertiary-fixed": "#341100",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#1b1b21",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#e4e1ea",
+                      "on-primary-fixed": "#04006d",
+                      "on-primary-fixed-variant": "#373a9b",
+                      "inverse-surface": "#303036",
+                      "on-tertiary-fixed-variant": "#773207",
+                      "primary": "#15157d",
+                      "background": "#fcf8ff",
+                      "on-error": "#ffffff",
+                      "surface-container-low": "#f5f2fb",
+                      "on-secondary-fixed": "#311300",
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#4f54b4",
+                      "primary-container": "#2e3192",
+                      "secondary-container": "#ff8928",
+                      "on-secondary-fixed-variant": "#723600",
+                      "secondary": "#964900",
+                      "surface-dim": "#dbd9e1",
+                      "outline": "#777683",
+                      "tertiary-fixed": "#ffdbcb",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#ffb692",
+                      "tertiary": "#491a00",
+                      "primary-fixed": "#e1e0ff",
+                      "on-surface-variant": "#464652",
+                      "surface-bright": "#fcf8ff",
+                      "inverse-primary": "#c0c1ff",
+                      "on-tertiary-container": "#f19160",
+                      "outline-variant": "#c7c5d4",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "tertiary-container": "#6c2a00",
+                      "surface": "#fcf8ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "gutter": "16px",
+                      "md": "16px",
+                      "safe-margin": "20px",
+                      "sm": "8px",
+                      "unit": "4px",
+                      "xl": "32px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "h2-headline": [
+                              "Geist"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "h1-display": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "h3-title": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "h2-headline": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h1-display": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h3-title": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-50 w-full bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-safe-margin py-xs max-w-xl mx-auto md:max-w-7xl h-16">
+<button class="text-primary dark:text-inverse-primary hover:bg-surface-container-high transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-h2-headline text-h2-headline font-bold text-primary dark:text-primary-fixed-dim">शिल्पमित्र</h1>
+<button class="text-primary dark:text-inverse-primary hover:bg-surface-container-high transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="translate">translate</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-safe-margin max-w-xl mx-auto md:max-w-4xl space-y-md">
+<!-- Welcome Header -->
+<section class="mb-lg">
+<h2 class="font-h1-display text-h1-display text-primary">Namaste, Raju!</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">नमस्ते राजू! | ನಮಸ್ತೆ ರಾಜು!</p>
+</section>
+<!-- Hero Widget: Funding Eligibility -->
+<section class="bg-surface-container-lowest rounded-xl p-lg shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-surface-variant">
+<div class="flex flex-col md:flex-row items-center gap-lg">
+<!-- Progress Ring -->
+<div class="relative w-32 h-32 flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle class="text-surface-variant" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="50.24" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-h3-title text-h3-title text-primary">80%</span>
+</div>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h3 class="font-h3-title text-h3-title text-on-surface mb-sm">Funding Eligibility</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">You are 80% ready for the PM Vishwakarma scheme. Complete your profile to apply.</p>
+<button class="w-full md:w-auto bg-primary text-on-primary font-body-md text-body-md font-semibold py-3 px-6 rounded-lg shadow-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-sm min-h-[48px]">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+                        Check New Schemes
+                    </button>
+</div>
+</div>
+</section>
+<!-- Stats Grid -->
+<section class="grid grid-cols-2 md:grid-cols-3 gap-sm">
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-surface-variant flex flex-col justify-center min-h-[100px]">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Total Sales</p>
+<p class="font-h2-headline text-h2-headline text-primary">₹45,200</p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-surface-variant flex flex-col justify-center min-h-[100px]">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Active Orders</p>
+<p class="font-h2-headline text-h2-headline text-primary">3</p>
+</div>
+<div class="col-span-2 md:col-span-1 bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-surface-variant flex flex-col justify-center min-h-[100px]">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Trade Growth</p>
+<div class="flex items-center gap-xs text-secondary-container">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<p class="font-h2-headline text-h2-headline">+12%</p>
+</div>
+</div>
+</section>
+<!-- Recent Activity -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-surface-variant overflow-hidden mb-xl">
+<div class="p-md border-b border-surface-variant">
+<h3 class="font-h3-title text-h3-title text-on-surface">Recent Activity</h3>
+</div>
+<div class="divide-y divide-surface-variant">
+<!-- Activity Item 1 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Hand-loomed Saree</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Today, 2:30 PM • UPI</p>
+</div>
+</div>
+<p class="font-h3-title text-h3-title text-primary">+₹4,500</p>
+</div>
+<!-- Activity Item 2 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Terracotta Pots (Set of 3)</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Yesterday, 10:15 AM • UPI</p>
+</div>
+</div>
+<p class="font-h3-title text-h3-title text-primary">+₹1,200</p>
+</div>
+<!-- Activity Item 3 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Carved Wooden Box</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">12 Oct, 4:45 PM • UPI</p>
+</div>
+</div>
+<p class="font-h3-title text-h3-title text-primary">+₹850</p>
+</div>
+</div>
+<div class="p-sm text-center border-t border-surface-variant bg-surface-container-low">
+<button class="font-label-caps text-label-caps text-primary hover:underline py-2 px-4 rounded min-h-[48px]">VIEW ALL TRANSACTIONS</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:bg-surface-container-highest/50 p-2 rounded-lg transition-colors min-h-[48px] min-w-[48px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="storefront">storefront</span>
+<span class="font-label-caps text-label-caps">बाज़ार</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transform scale-90 duration-200 min-h-[48px] min-w-[48px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">डैशबोर्ड</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:bg-surface-container-highest/50 p-2 rounded-lg transition-colors min-h-[48px] min-w-[48px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="account_balance">account_balance</span>
+<span class="font-label-caps text-label-caps">योजनाएं</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:bg-surface-container-highest/50 p-2 rounded-lg transition-colors min-h-[48px] min-w-[48px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">प्रोफ़ाइल</span>
+</a>
+</nav>
+</body></html>
